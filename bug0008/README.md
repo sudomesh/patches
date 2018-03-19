@@ -1,3 +1,4 @@
+# Why this patch?
 In an effort to resolve intermittent failures of home nodes connecting to the internet (see https://github.com/sudomesh/bugs/issues/8) via an exit node, we have created a new exit node with a newer version of tunneldigger broker (i.e., https://github.com/wlanslovenija/tunneldigger/commits/210037aabf8538a0a272661e08ea142784b42b2c). For home nodes to talk to the "new" exit node, a new version of the tunneldigger client needs to be installed. In addition, the tunneldigger client configuration needs to be updated so that the node talks to the new exit node. This procedure describes how to patch/upgrade your node to make this happen.
 
 Please note that this procedure has been tested on a mynet n600 running v0.2 (fledgling) of our software. 
@@ -70,7 +71,7 @@ Following edit the tunnel digger configuration:
 vi /var/patches/bug-0008/patch/etc/init.d/tunneldigger
 ```
 
-now type "i", and append on the line after ```config broker 'main'```:
+now type "i", and append these lines on the line after ```config broker 'main'``` (most likely the second line in the file):
 
 ```
  list address '64.71.176.94:8942'
@@ -97,15 +98,9 @@ scp [download dir]/tunneldigger root@172.30.0.1:/var/patches/bug-0008/patch/usr/
 
 On the home node, run the following to apply the patch.
 
-```/etc/init.d/tunneldigger stop```
-
-## apply the patch
-swap out the tunneldigger client by doing this on the home node:
-
 ```
-/etc/init.d/tunneldigger stop
-cp -r /var/patches/bug-0008/patch /
-/etc/init.d/tunneldigger start
+cp -r /var/patches/bug-0008/patch/* /
+/etc/init.d/tunneldigger retart
 ```
 
 ## check 
@@ -118,10 +113,9 @@ Also, if you go to https://whatsmyip.com, you should *not* see an ip address loc
 If your node doesn't like the patch, or if there's some other reason you'd like to revert the patch, run this on the home node:
 
 ```
-/etc/init.d/tunneldigger stop
-cp -r /var/patches/bug-0008/backup /
-/etc/init.d/tunneldigger start
+cp -r /var/patches/bug-0008/backup/* /
+/etc/init.d/tunneldigger restart
 ```
 
 ## pat yourself of the back
-If all goes well, pat yourself on the back, and . . . help other do the same, or perhaps consider writing an automated script to do this.
+If all goes well, pat yourself on the back, let folks know on https://peoplesopen.net/chat and . . . help others do the same, or perhaps consider writing an automated script to do this.
