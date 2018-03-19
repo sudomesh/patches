@@ -60,20 +60,20 @@ root@goat:~#
 First, make a backup of the files you are about to change. To do this run the following after you logged into your home node:
 
 ```
-mkdir -p /var/patches/bug-0008/backup/usr/bin
-mkdir -p /var/patches/bug-0008/backup/etc/init.d
-mkdir -p /var/patches/bug-0008/patch/etc/init.d
-mkdir -p /var/patches/bug-0008/patch/usr/bin
+mkdir -p /opt/patches/bug-0008/backup/usr/bin
+mkdir -p /opt/patches/bug-0008/backup/etc/init.d
+mkdir -p /opt/patches/bug-0008/patch/etc/init.d
+mkdir -p /opt/patches/bug-0008/patch/usr/bin
 
-cp /usr/bin/tunneldigger /var/patches/bug-0008/backup/usr/bin/tunneldigger
-cp /etc/config/tunneldigger /var/patches/bug-0008/backup/etc/init.d/tunneldigger
-cp /etc/config/tunneldigger /var/patches/bug-0008/patch/etc/init.d/tunneldigger
+cp /usr/bin/tunneldigger /opt/patches/bug-0008/backup/usr/bin/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug-0008/backup/etc/init.d/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug-0008/patch/etc/init.d/tunneldigger
 ```
 
 Following edit the tunnel digger configuration:
 
 ```
-vi /var/patches/bug-0008/patch/etc/init.d/tunneldigger
+vi /opt/patches/bug-0008/patch/etc/init.d/tunneldigger
 ```
 
 now type "i", and append these lines on the line after ```config broker 'main'``` (most likely the second line in the file):
@@ -96,7 +96,7 @@ Open a new terminal, and keep the old one open.
 Copy the new binary to your home node using on your computer
 
 ```
-scp [download dir]/tunneldigger root@172.30.0.1:/var/patches/bug-0008/patch/usr/bin/
+scp [download dir]/tunneldigger root@172.30.0.1:/opt/patches/bug-0008/patch/usr/bin/
 ```
 
 ## apply the patch
@@ -104,7 +104,7 @@ scp [download dir]/tunneldigger root@172.30.0.1:/var/patches/bug-0008/patch/usr/
 On the home node, run the following to apply the patch.
 
 ```
-cp -r /var/patches/bug-0008/patch/* /
+cp -r /opt/patches/bug-0008/patch/* /
 reboot now
 ```
 
@@ -118,7 +118,7 @@ Also, if you go to https://whatsmyip.com, you should *not* see an ip address loc
 If your node doesn't like the patch, or if there's some other reason you'd like to revert the patch, run this on the home node:
 
 ```
-cp -r /var/patches/bug-0008/backup/* /
+cp -r /opt/patches/bug-0008/backup/* /
 reboot now
 ```
 
