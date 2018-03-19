@@ -100,7 +100,7 @@ On the home node, run the following to apply the patch.
 
 ```
 cp -r /var/patches/bug-0008/patch/* /
-/etc/init.d/tunneldigger retart
+reboot now
 ```
 
 ## check 
@@ -114,7 +114,7 @@ If your node doesn't like the patch, or if there's some other reason you'd like 
 
 ```
 cp -r /var/patches/bug-0008/backup/* /
-/etc/init.d/tunneldigger restart
+reboot now
 ```
 
 ## pat yourself of the back
