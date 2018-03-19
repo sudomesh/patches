@@ -3,6 +3,8 @@ In an effort to resolve intermittent failures of home nodes connecting to the in
 
 Please note that this procedure has been tested on a mynet n600 running v0.2 (fledgling) of our software. 
 
+Also note that if you'd rather not patch your node, you can re-flash it using release v0.2.3 or higher. See https://github.com/sudomesh/sudowrt-firmware/releases .
+
 # WARNING
 This patch procedure is being tested.
 
