@@ -3,6 +3,9 @@ In an effort to resolve intermittent failures of home nodes connecting to the in
 
 Please note that this procedure has been tested on a mynet n600 running v0.2 (fledgling) of our software. 
 
+# WARNING
+This patch procedure is being tested.
+
 # Prerequisites
 
 It is suggested to have physical access to the home node. If this precedure is done remotely and fails, it may be tricky to revert the patch remotely. If this patch is applied remotely, please work with the node owner to make sure that they know what is happening.
