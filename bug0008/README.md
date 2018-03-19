@@ -78,7 +78,7 @@ now type "i", and append these lines on the line after ```config broker 'main'``
 
 ```
  list address '64.71.176.94:8942'
- list address '64.71.176.94:8942'
+ list address '64.71.176.94:8943'
 ```
 
 save by hitting escape "esc", typing ":w" and typing ":q"
