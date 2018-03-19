@@ -19,13 +19,15 @@ tunneldigger-pre-patch | copied from a mynet n600 v0.2 (fledgling) install
 swap out the tunneldigger client:
 
 ```
+(on node)
 mkdir -p /var/patches/bug-0008
 mv /usr/bin/tunneldigger /var/patches/bug-0008/tunneldigger-pre-patch
+(on machine with tunneldigger binary)
 scp tunneldigger root@somenode:/usr/bin/tunneldigger
 ```
 
 ## patch tunneldigger config
-patch the /etc/config/tunneldigger to include 
+patch the /etc/config/tunneldigger on the home node to include 
 
 ```
 64.71.176.94:8942
