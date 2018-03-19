@@ -61,19 +61,19 @@ First, make a backup of the files you are about to change. To do this run the fo
 
 ```
 mkdir -p /opt/patches/bug-0008/backup/usr/bin
-mkdir -p /opt/patches/bug-0008/backup/etc/init.d
-mkdir -p /opt/patches/bug-0008/patch/etc/init.d
+mkdir -p /opt/patches/bug-0008/backup/etc/config
+mkdir -p /opt/patches/bug-0008/patch/etc/config
 mkdir -p /opt/patches/bug-0008/patch/usr/bin
 
 cp /usr/bin/tunneldigger /opt/patches/bug-0008/backup/usr/bin/tunneldigger
-cp /etc/config/tunneldigger /opt/patches/bug-0008/backup/etc/init.d/tunneldigger
-cp /etc/config/tunneldigger /opt/patches/bug-0008/patch/etc/init.d/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug-0008/backup/etc/config/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug-0008/patch/etc/config/tunneldigger
 ```
 
 Following edit the tunnel digger configuration:
 
 ```
-vi /opt/patches/bug-0008/patch/etc/init.d/tunneldigger
+vi /opt/patches/bug-0008/patch/etc/config/tunneldigger
 ```
 
 now type "i", and append these lines on the line after ```config broker 'main'``` (most likely the second line in the file):
