@@ -39,6 +39,6 @@ then restart tunnel digger using
 /etc/init.d/tunneldigger start
 ```
 
-and check whether a bridge can be created.
+and check whether a tunnel can be created.
 
 
