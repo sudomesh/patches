@@ -11,7 +11,7 @@ tunneldigger-pre-patch | copied from a mynet n600 v0.2 (fledgling) install
 
 # steps
 
-##stop tunneldigger
+## stop tunneldigger
 
 ```/etc/init.d/tunneldigger stop```
 
