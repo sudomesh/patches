@@ -105,6 +105,7 @@ On the home node, run the following to apply the patch.
 
 ```
 cp -r /opt/patches/bug-0008/patch/* /
+echo -e "$(date --iso-8601=seconds)\tbugs-0008\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
 
@@ -119,6 +120,7 @@ If your node doesn't like the patch, or if there's some other reason you'd like 
 
 ```
 cp -r /opt/patches/bug-0008/backup/* /
+echo -e "$(date --iso-8601=seconds)\tbugs-0008\treverted" >> /opt/patches/patch.log
 reboot now
 ```
 
