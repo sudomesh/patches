@@ -24,26 +24,40 @@ Ssh into your node after connecting to you private network using ```ssh root@172
 
 ```
 mkdir -p /opt/patches/bug-0023/backup/etc/config
-cp /etc/config/network /opt/patches/bug-0023/backup/etc/config
+mkdir -p /opt/patches/bug-0023/backup/etc/sudomesh
+cp /etc/config/network /opt/patches/bug-0023/backup/etc/config/
 cp /etc/resolv.conf.dnsmasq /opt/patches/bug-0023/backup/etc/
 cp /etc/sudomesh/home_node /opt/patches/bug-0023/backup/etc/sudomesh/
 cp /etc/udhcpc.user /opt/patches/bug-0023/backup/etc/
 ```
 
+After this, you should see the following output when running ```find /opt/patches/bug-0023``` :
+
+```
+/opt/patches/bug-0023/
+/opt/patches/bug-0023/backup
+/opt/patches/bug-0023/backup/etc
+/opt/patches/bug-0023/backup/etc/udhcpc.user
+/opt/patches/bug-0023/backup/etc/sudomesh
+/opt/patches/bug-0023/backup/etc/config
+/opt/patches/bug-0023/backup/etc/config/network
+/opt/patches/bug-0023/backup/etc/resolv.conf.dnsmasq
+```
+
 ## prepare your patch
 
 ### prepare patch staging area
-Now, we're going to use the backup file, and copy then to the patch staging location.
+Now, we're going to use the backup files, and copy then to the patch staging location.
 
 ```
-cp -r /opt/patches/bugs0023/backup /opt/patches/bugs0023/patch
+cp -r /opt/patches/bug-0023/backup /opt/patches/bug-0023/patch
 ```
 
 ### download udhcpc.user file
 Also, download the file [udhcpc.user](./udhcpc.user) file to your laptop, and copy it to your node by opening another terminal and executing:
 
 ```
-scp [download folder]/udhcpc.user root@172.30.0.1:/opt/patches/bug-0023/patch/etc/udhcpc.user .
+scp [download folder]/udhcpc.user root@172.30.0.1:/opt/patches/bug-0023/patch/etc/
 ```
 
 ### edit staged files
@@ -68,7 +82,7 @@ Apply the patch by executing on your node:
 
 ```
 cp -r /opt/patches/bug-0023/patch/* /
-echo -e "$(date --iso-8601=seconds)\tbug-0023\tapplied" >> /opt/patches/patch.log
+echo -e "$(date -Iseconds)\tbug-0023\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
 
@@ -82,7 +96,7 @@ If your node doesn't like the patch, or if there's some other reason you'd like 
 
 ```
 cp -r /opt/patches/bug-0023/backup/* /
-echo -e "$(date --iso-8601=seconds)\tbug-0023\treverted" >> /opt/patches/patch.log
+echo -e "$(date -Iseconds)\tbug-0023\treverted" >> /opt/patches/patch.log
 reboot now
 ```
 
