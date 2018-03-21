@@ -23,25 +23,25 @@ If all this makes you nervous, but you do want to apply the patch, please holler
 Ssh into your node after connecting to you private network using ```ssh root@172.30.0.1``` and make a backup using the commands below:
 
 ```
-mkdir -p /opt/patches/bug-0023/backup/etc/config
-mkdir -p /opt/patches/bug-0023/backup/etc/sudomesh
-cp /etc/config/network /opt/patches/bug-0023/backup/etc/config/
-cp /etc/resolv.conf.dnsmasq /opt/patches/bug-0023/backup/etc/
-cp /etc/sudomesh/home_node /opt/patches/bug-0023/backup/etc/sudomesh/
-cp /etc/udhcpc.user /opt/patches/bug-0023/backup/etc/
+mkdir -p /opt/patches/bug0023/backup/etc/config
+mkdir -p /opt/patches/bug0023/backup/etc/sudomesh
+cp /etc/config/network /opt/patches/bug0023/backup/etc/config/
+cp /etc/resolv.conf.dnsmasq /opt/patches/bug0023/backup/etc/
+cp /etc/sudomesh/home_node /opt/patches/bug0023/backup/etc/sudomesh/
+cp /etc/udhcpc.user /opt/patches/bug0023/backup/etc/
 ```
 
-After this, you should see the following output when running ```find /opt/patches/bug-0023``` :
+After this, you should see the following output when running ```find /opt/patches/bug0023``` :
 
 ```
-/opt/patches/bug-0023/
-/opt/patches/bug-0023/backup
-/opt/patches/bug-0023/backup/etc
-/opt/patches/bug-0023/backup/etc/udhcpc.user
-/opt/patches/bug-0023/backup/etc/sudomesh
-/opt/patches/bug-0023/backup/etc/config
-/opt/patches/bug-0023/backup/etc/config/network
-/opt/patches/bug-0023/backup/etc/resolv.conf.dnsmasq
+/opt/patches/bug0023/
+/opt/patches/bug0023/backup
+/opt/patches/bug0023/backup/etc
+/opt/patches/bug0023/backup/etc/udhcpc.user
+/opt/patches/bug0023/backup/etc/sudomesh
+/opt/patches/bug0023/backup/etc/config
+/opt/patches/bug0023/backup/etc/config/network
+/opt/patches/bug0023/backup/etc/resolv.conf.dnsmasq
 ```
 
 ## prepare your patch
@@ -50,25 +50,25 @@ After this, you should see the following output when running ```find /opt/patche
 Now, we're going to use the backup files, and copy then to the patch staging location.
 
 ```
-cp -r /opt/patches/bug-0023/backup /opt/patches/bug-0023/patch
+cp -r /opt/patches/bug0023/backup /opt/patches/bug0023/patch
 ```
 
 ### download udhcpc.user file
 Also, download the file [udhcpc.user](./udhcpc.user) file to your laptop, and copy it to your node by opening another terminal and executing:
 
 ```
-scp [download folder]/udhcpc.user root@172.30.0.1:/opt/patches/bug-0023/patch/etc/
+scp [download folder]/udhcpc.user root@172.30.0.1:/opt/patches/bug0023/patch/etc/
 ```
 
 ### edit staged files
 
 Login to your node, and make the following edits using your favorite editor (vi perhaps?):
 
-In ```/opt/patches/bug-0023/patch/etc/resolv.conf.dnsmasq``` remove the line that contains ```nameserver 100.64.0.42 # sudomesh exit server```.
+In ```/opt/patches/bug0023/patch/etc/resolv.conf.dnsmasq``` remove the line that contains ```nameserver 100.64.0.42 # sudomesh exit server```.
 
-In ```/opt/patches/bug-0023/patch/etc/config/network``` remove the lines that contain ```option dns '100.64.0.42'``` . 
+In ```/opt/patches/bug0023/patch/etc/config/network``` remove the lines that contain ```option dns '100.64.0.42'``` . 
 
-In ```/opt/patches/bug-0023/patch/etc/sudomesh/home_node``` remove the following lines at the start of the file:
+In ```/opt/patches/bug0023/patch/etc/sudomesh/home_node``` remove the following lines at the start of the file:
 
 ```
 # TODO: We need to somehow detect this after the tunnel comes up
@@ -81,8 +81,8 @@ INETEXITIP=45.34.140.42
 Apply the patch by executing on your node:
 
 ```
-cp -r /opt/patches/bug-0023/patch/* /
-echo -e "$(date -Iseconds)\tbug-0023\tapplied" >> /opt/patches/patch.log
+cp -r /opt/patches/bug0023/patch/* /
+echo -e "$(date -Iseconds)\tbug0023\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
 
@@ -95,8 +95,8 @@ After reboot, connect to the peoplesopen ssid and confirm that you can access th
 If your node doesn't like the patch, or if there's some other reason you'd like to revert the patch, run this on the home node:
 
 ```
-cp -r /opt/patches/bug-0023/backup/* /
-echo -e "$(date -Iseconds)\tbug-0023\treverted" >> /opt/patches/patch.log
+cp -r /opt/patches/bug0023/backup/* /
+echo -e "$(date -Iseconds)\tbug0023\treverted" >> /opt/patches/patch.log
 reboot now
 ```
 

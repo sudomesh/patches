@@ -12,6 +12,8 @@ This patch procedure is being tested.
 
 It is suggested to have physical access to the home node. If this precedure is done remotely and fails, it may be tricky to revert the patch remotely. If this patch is applied remotely, please work with the node owner to make sure that they know what is happening.
 
+Also, please apply patch for [bug0023](./bug0023) if you haven't done so already.
+
 Files:
 
  name | desc
@@ -60,27 +62,27 @@ root@goat:~#
 First, make a backup of the files you are about to change. To do this run the following after you logged into your home node:
 
 ```
-mkdir -p /opt/patches/bug-0008/backup/usr/bin
-mkdir -p /opt/patches/bug-0008/backup/etc/config
-mkdir -p /opt/patches/bug-0008/patch/etc/config
-mkdir -p /opt/patches/bug-0008/patch/usr/bin
+mkdir -p /opt/patches/bug0008/backup/usr/bin
+mkdir -p /opt/patches/bug0008/backup/etc/config
+mkdir -p /opt/patches/bug0008/patch/etc/config
+mkdir -p /opt/patches/bug0008/patch/usr/bin
 
-cp /usr/bin/tunneldigger /opt/patches/bug-0008/backup/usr/bin/tunneldigger
-cp /etc/config/tunneldigger /opt/patches/bug-0008/backup/etc/config/tunneldigger
-cp /etc/config/tunneldigger /opt/patches/bug-0008/patch/etc/config/tunneldigger
+cp /usr/bin/tunneldigger /opt/patches/bug0008/backup/usr/bin/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug0008/backup/etc/config/tunneldigger
+cp /etc/config/tunneldigger /opt/patches/bug0008/patch/etc/config/tunneldigger
 ```
 
 Following edit the tunnel digger configuration:
 
 ```
-vi /opt/patches/bug-0008/patch/etc/config/tunneldigger
+vi /opt/patches/bug0008/patch/etc/config/tunneldigger
 ```
 
 now type "i", and append these lines on the line after ```config broker 'main'``` (most likely the second line in the file):
 
 ```
  list address '64.71.176.94:8942'
- list address '64.71.176.94:8943'
+ list address '64.71.176.94:443'
 ```
 
 save by hitting escape "esc", typing ":w" and typing ":q"
@@ -96,7 +98,7 @@ Open a new terminal, and keep the old one open.
 Copy the new binary to your home node using on your computer
 
 ```
-scp [download dir]/tunneldigger root@172.30.0.1:/opt/patches/bug-0008/patch/usr/bin/
+scp [download dir]/tunneldigger root@172.30.0.1:/opt/patches/bug0008/patch/usr/bin/
 ```
 
 ## apply the patch
@@ -104,7 +106,7 @@ scp [download dir]/tunneldigger root@172.30.0.1:/opt/patches/bug-0008/patch/usr/
 On the home node, run the following to apply the patch.
 
 ```
-cp -r /opt/patches/bug-0008/patch/* /
+cp -r /opt/patches/bug0008/patch/* /
 echo -e "$(date -Iseconds)\tbugs-0008\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
@@ -119,7 +121,7 @@ Also, if you go to https://whatsmyip.com, you should *not* see an ip address loc
 If your node doesn't like the patch, or if there's some other reason you'd like to revert the patch, run this on the home node:
 
 ```
-cp -r /opt/patches/bug-0008/backup/* /
+cp -r /opt/patches/bug0008/backup/* /
 echo -e "$(date -Iseconds)\tbugs-0008\treverted" >> /opt/patches/patch.log
 reboot now
 ```
