@@ -24,8 +24,11 @@ Ssh into your node after connecting to you private network using ```ssh root@172
 
 ```
 mkdir -p /opt/patches/bug0023/backup/etc/config
+mkdir -p /opt/patches/bug0023/backup/etc/init.d
 mkdir -p /opt/patches/bug0023/backup/etc/sudomesh
+
 cp /etc/config/network /opt/patches/bug0023/backup/etc/config/
+cp /etc/init.d/meshrouting /opt/patches/bug0023/backup/etc/init.d/
 cp /etc/resolv.conf.dnsmasq /opt/patches/bug0023/backup/etc/
 cp /etc/sudomesh/home_node /opt/patches/bug0023/backup/etc/sudomesh/
 cp /etc/udhcpc.user /opt/patches/bug0023/backup/etc/
@@ -75,6 +78,8 @@ In ```/opt/patches/bug0023/patch/etc/sudomesh/home_node``` remove the following 
 MESHEXITIP=100.64.0.42
 INETEXITIP=45.34.140.42
 ```
+
+In ```/opt/patches/bug/0023/patch/etc/init.d/meshreouting``` remove the line that contains ```ip rule add to 45.34.140.42/32 prio 15000 table main``` .
 
 ## apply the patch 
 
