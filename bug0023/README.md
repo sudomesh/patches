@@ -42,6 +42,7 @@ After this, you should see the following output when running ```find /opt/patche
 /opt/patches/bug0023/backup/etc
 /opt/patches/bug0023/backup/etc/udhcpc.user
 /opt/patches/bug0023/backup/etc/sudomesh
+/opt/patches/bug0023/backup/etc/sudomesh/home_node
 /opt/patches/bug0023/backup/etc/config
 /opt/patches/bug0023/backup/etc/config/network
 /opt/patches/bug0023/backup/etc/resolv.conf.dnsmasq
@@ -79,7 +80,7 @@ MESHEXITIP=100.64.0.42
 INETEXITIP=45.34.140.42
 ```
 
-In ```/opt/patches/bug/0023/patch/etc/init.d/meshreouting``` remove the line that contains ```ip rule add to 45.34.140.42/32 prio 15000 table main``` .
+In ```/opt/patches/bug/0023/patch/etc/init.d/meshrouting``` remove the line that contains ```ip rule add to 45.34.140.42/32 prio 15000 table main``` .
 
 ## apply the patch 
 
@@ -105,5 +106,5 @@ echo -e "$(date -Iseconds)\tbug0023\treverted" >> /opt/patches/patch.log
 reboot now
 ```
 
-i## pat yourself of the back
+## pat yourself of the back
 If all goes well, pat yourself on the back, let folks know on https://peoplesopen.net/chat and . . . help others do the same, or perhaps consider writing an automated script to do this.
