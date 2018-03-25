@@ -79,7 +79,7 @@ MESHEXITIP=100.64.0.42
 INETEXITIP=45.34.140.42
 ```
 
-In ```/opt/patches/bug/0023/patch/etc/init.d/meshreouting``` remove the line that contains ```ip rule add to 45.34.140.42/32 prio 15000 table main``` .
+In ```/opt/patches/bug0023/patch/etc/init.d/meshrouting``` remove the line that contains ```ip rule add to $INETEXITIP/32 prio 15000 table main``` .
 
 ## apply the patch 
 
