@@ -107,7 +107,8 @@ On the home node, run the following to apply the patch.
 
 ```
 cp -r /opt/patches/bug0008/patch/* /
-echo -e "$(date -Iseconds)\tbugs-0008\tapplied" >> /opt/patches/patch.log
+chmod +x /usr/bin/tunneldigger
+echo -e "$(date -Iseconds)\tbug0008\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
 
