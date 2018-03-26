@@ -101,13 +101,18 @@ Copy the new binary to your home node using on your computer
 scp [download dir]/tunneldigger root@172.30.0.1:/opt/patches/bug0008/patch/usr/bin/
 ```
 
+Now, to make sure that tunneldigger patch has permission to be executed on your home node, run:
+
+```
+chmod +x /opt/patches/bug0008/patch/usr/bin/tunneldigger
+```
+
 ## apply the patch
 
 On the home node, run the following to apply the patch.
 
 ```
 cp -r /opt/patches/bug0008/patch/* /
-chmod +x /usr/bin/tunneldigger
 echo -e "$(date -Iseconds)\tbug0008\tapplied" >> /opt/patches/patch.log
 reboot now
 ```
