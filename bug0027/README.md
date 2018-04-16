@@ -64,7 +64,7 @@ In ```/opt/patches/bug0027/patch/etc/config/network``` add the following two lin
 ```
 list dns '100.64.0.42'
 list dns '100.64.0.43'
-``` . 
+``` 
 
 ## apply the patch 
 
