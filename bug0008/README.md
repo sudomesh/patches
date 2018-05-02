@@ -83,6 +83,14 @@ now type "i", and append these lines on the line after ```config broker 'main'``
 ```
  list address '64.71.176.94:8942'
  list address '64.71.176.94:443'
+ list address '45.34.140.42:8942'
+ list address '45.34.140.42:443'
+ list address '104.236.181.226:8942'
+ list address '104.236.181.226:8943'
+ list address '142.254.26.9:8942'
+ list address '104.236.181.202:8942'
+ list address '104.131.158.147:8942'
+ list address '107.170.219.5:8942'
 ```
 
 save by hitting escape "esc", typing ":w" and typing ":q"
