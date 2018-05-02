@@ -67,9 +67,14 @@ scp [download folder]/udhcpc.user root@172.30.0.1:/opt/patches/bug0023/patch/etc
 
 Login to your node, and make the following edits using your favorite editor (vi perhaps?):
 
-In ```/opt/patches/bug0023/patch/etc/resolv.conf.dnsmasq``` remove the line that contains ```nameserver 100.64.0.42 # sudomesh exit server```.
+In ```/opt/patches/bug0023/patch/etc/resolv.conf.dnsmasq``` insert the line that contains ```nameserver 100.64.0.43 # sudomesh exit server``` before the line that contains ```nameserver 100.64.0.42 #sudomesh exit server```.
 
-In ```/opt/patches/bug0023/patch/etc/config/network``` remove the lines that contain ```option dns '100.64.0.42'``` . 
+In ```/opt/patches/bug0023/patch/etc/config/network``` remove the lines that contain ```option dns '100.64.0.42'``` and replace it with:
+
+```
+list dns '100.64.0.43'
+list dns '100.64.0.42'
+```   
 
 In ```/opt/patches/bug0023/patch/etc/sudomesh/home_node``` remove the following lines at the start of the file:
 
