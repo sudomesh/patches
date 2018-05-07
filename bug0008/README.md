@@ -12,7 +12,7 @@ This patch procedure is being tested.
 
 It is suggested to have physical access to the home node. If this precedure is done remotely and fails, it may be tricky to revert the patch remotely. If this patch is applied remotely, please work with the node owner to make sure that they know what is happening.
 
-Also, please apply patch for [bug0023](./bug0023) if you haven't done so already.
+Also, please apply patch for [bug0023](../bug0023) if you haven't done so already.
 
 Files:
 
