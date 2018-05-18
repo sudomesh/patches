@@ -1,5 +1,20 @@
 # Patches
 
+This repository contains patches for home nodes. Please apply these patches if you have access to an unpatched home node with firmware version < 0.2.3 . You can check the patch level of a node, login to node and ```/opt/patches/```. This directory is the staging area in which old settings are saved and patches are prepared to be applied to the node. For more information about this, please have a look at [bug0008](./bug0008).    
+
+## historic context 
+Initially, the idea was to build patches to be deployed with scripts, and we settled on using manual patch procedures. The reasons were that automated patch procedures are hard to build/validate test and only about 30 nodes were active on the network at this time. Also, a manual patch procedures are a little more educational because you, the patcher, gets to see the applies changes in detail.
+
+## active patches
+ firmware version | patch | description
+ --- | --- | --- 
+  < 0.2.3 | [bug0008](./bug0008) | upgrades tunneldigger   
+  < 0.2.3 | [bug0023](./bug0023) | add support for two exit nodes
+
+
+
+## historic proposal for automated patch procedures 
+
 find and deploy patches related to sudomesh bugs
 
 To perform a patch of <bug_number> on node of <node_IP>   
