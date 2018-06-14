@@ -42,9 +42,12 @@ After this, you should see the following output when running ```find /opt/patche
 /opt/patches/bug0023/backup/etc
 /opt/patches/bug0023/backup/etc/udhcpc.user
 /opt/patches/bug0023/backup/etc/sudomesh
+/opt/patches/bug0023/backup/etc/sudomesh/home_node
 /opt/patches/bug0023/backup/etc/config
 /opt/patches/bug0023/backup/etc/config/network
 /opt/patches/bug0023/backup/etc/resolv.conf.dnsmasq
+/opt/patches/bug0023/backup/etc/init.d
+/opt/patches/bug0023/backup/etc/init.d/meshrouting
 ```
 
 ## prepare your patch
